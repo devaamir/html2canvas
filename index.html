@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+ <head>
+   <style>
+     * {
+       margin: 0;
+       padding: 0;
+       text-decoration: none;
+       list-style: none;
+     }
+     div.container {
+       background: url("iconicMomentBG_l.webp");
+       width: 182px;
+       height: 256px;
+       position: relative;
+       margin: 100px;
+       display: none;
+     }
+     div.container img.player-img {
+       height: 100%;
+       position: absolute;
+       bottom: 0;
+       right: -74px;
+     }
+     div.container h3.pos {
+       position: absolute;
+       top: 10px;
+       left: 14px;
+       color: #fff;
+     }
+     div.container h3.rating {
+       position: absolute;
+       top: 30px;
+       left: 15px;
+       color: #fff;
+     }
+     div.container img.ball {
+       position: absolute;
+       top: 55px;
+       left: 8px;
+       width: 30px;
+     }
+     div.container img.flag {
+       position: absolute;
+       top: 85px;
+       left: 8px;
+       width: 30px;
+     }
+     div.container h4.name {
+       position: absolute;
+       width: 100%;
+       background: rgba(0, 0, 0, 0.5);
+       color: #fff;
+       text-align: center;
+       bottom: 0;
+     }
+     div.new {
+       padding: 20px;
+     }
+   </style>
+ </head>
+ <body onload="loadPage()">
+  <h1 id="his">Take screenshot of webpage with html2canvas</h1>
+  <div>
+    <label for="imgs">Select image:</label>
+    <input type="file" id="imgs" name="imgs" data='' accept="image/*" onChange="loadFile(event)" >
+    <button onclick="add()">Submit</button>
+  </div>
+  <div class="container" id='container'>
+    <!-- <img src="iconicMomentBG_l.webp" alt="iconic-card" class="main-bg" /> -->
+    <img src="#" alt="palyer-img" class="player-img"/>
+    <h3 class="pos">SS</h3>
+    <h3 class="rating">95</h3>
+    <img src="#" alt="ball" class="ball" />
+    <img src="flag-round-250.png" alt="flag" class="flag" />
+    <h4 class="name">J. Cruiff</h4>
+  </div>
+  <input type='button' id='but_screenshot' value='Take screenshot' onclick='screenshot();'><br/>
+  <div class="new"></div>
+  <!-- Script -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script type='text/javascript'>
+
+  function loadPage() {
+    let rating = document.querySelector("h3.rating");
+    let ballImg = document.querySelector("img.ball");
+    if(rating.innerText >= 85){
+      ballImg.src = "ball4.png";
+    } else if(rating.innerText < 85 && rating.innerText >= 80 ) {
+      ballImg.src = "ball3.png";
+    } else if (rating.innerText < 80 ) {
+      ballImg.src = "ball2.png";
+    }
+  }
+  const loadFile = function(event) {
+    let imgData = document.querySelector("input#imgs");
+    const file = document.querySelector('input[type=file]').files[0];
+    const reader = new FileReader();
+    console.log(reader)
+
+    reader.addEventListener("load", function () {
+    // convert image file to base64 string
+    imgData.setAttribute("data",reader.result);
+    console.log(reader)
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+  }
+  function add() {
+      let bgUrl = document.querySelector("input#imgs").getAttribute("data");
+      let bgCont = document.querySelector("img.player-img");
+      let mainCont = document.getElementById("container");
+      bgCont.src = bgUrl;
+      console.log(bgCont.src);
+      mainCont.style.display = "block";
+  }
+
+  function screenshot(){
+    html2canvas(document.getElementById('container')).then(function(canvas) {
+    document.body.appendChild(canvas);
+    var a = document.createElement('a');
+        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        let imgname = document.querySelector("h4.name").innerText;
+        let hi = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
+        a.download = `${hi}/${imgname}.jpg`;
+        a.click();
+  });
+  }
+  </script>
+ </body>
+</html>
