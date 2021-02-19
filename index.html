@@ -7,12 +7,41 @@
        padding: 0;
        text-decoration: none;
        list-style: none;
+       font-family: "din-next-arabic", Arial, Helvetica, sans-serif
+     }
+     @font-face {
+      font-family: 'din-next-arabic';
+      src: url("./fonts/FontsFree-Net-din-next-arabic-bold.ttf") format("ttf");
+      src: url("./fonts/FontsFree-Net-din-next-arabic-bold.ttf") format("ttf"), url("./fonts/FontsFree-Net-din-next-arabic-bold.ttf") format("truetype");
+      font-weight: 500;
+      font-style: bold
+     }
+     div.Area {
+       display: block;
+       margin: 100px;
+     }
+     div.Area #name {
+       display: block;
+       margin: 20px;
+     }
+     div.Area #rating {
+       display: block;
+       margin: 20px;
+     }
+     div.small-container {
+       display: flex;
+       flex-direction: column;
+       width: 90px;
+       height: 100px;
+       justify-content: space-between;
+       align-items: center;
+       padding-top: 20px
      }
      div.container {
        background: url("iconicMomentBG_l.webp") no-repeat;
        background-size: cover;
-       width: 546px;
-       height: 768px;
+       width: 273px;
+       height: 384px;
        position: relative;
        margin: 100px;
        display: none;
@@ -21,32 +50,38 @@
        height: 100%;
        position: absolute;
        bottom: 0;
-       right: -74px;
+       right: -112px;
      }
      div.container h3.pos {
-       position: absolute;
-       top: 10px;
-       left: 14px;
+       /* position: absolute; */
+       /* top: 10px;
+       left: 14px; */
        color: #fff;
+       font-size: 30px;
+
      }
      div.container h3.rating {
-       position: absolute;
-       top: 30px;
-       left: 15px;
+       /* position: absolute; */
+       /* top: 30px;
+       left: 15px; */
        color: #fff;
+       font-size: 30px;
+
      }
      div.container img.ball {
-       position: absolute;
-       top: 55px;
-       left: 8px;
-       width: 30px;
+       /* position: absolute; */
+       /* top: 55px;
+       left: 8px; */
+       width: 50px;
+       height: 50px;
+       margin-top: 16px;
      }
-     div.container img.flag {
+     /* div.container img.flag {
        position: absolute;
        top: 85px;
        left: 8px;
        width: 30px;
-     }
+     } */
      div.container h4.name {
        position: absolute;
        width: 100%;
@@ -54,15 +89,100 @@
        color: #fff;
        text-align: center;
        bottom: 0;
+       font-size: 24px;
+
      }
-     div.new {
-       padding: 20px;
+     div#new {
+       margin: 100px;
+       width: 546px;
+       height: 768px;
+     }
+     div#new canvas {
+       margin: 100px;
+       width: 100%;
+       height: 100%;
      }
    </style>
  </head>
- <body onload="loadPage()">
+ <body>
   <h1 id="his">Take screenshot of webpage with html2canvas</h1>
-  <div>
+  <div class="Area">
+    <label for="name">Player Name:</label>
+    <input type="text" id="name" placeholder="player name" />
+    <label for="rating">Player Rating:</label>
+    <input type="text" id="rating" placeholder="player rating" />
+    <label  for="position">Position</label>
+    <select id="position">
+      <option value="GK">GK</option>
+      <option value="CB">CB</option>
+      <option value="RB">RB</option>
+      <option value="LB">LB</option>
+      <option value="DMF">DMF</option>
+      <option value="CMF">CMF</option>
+      <option value="RMF">RMF</option>
+      <option value="LMF">LMF</option>
+      <option value="AMF">AMF</option>
+      <option value="SS" selected>SS</option>
+      <option value="RWF">RWF</option>
+      <option value="LWF">LWF</option>
+      <option value="CF">CF</option>
+    </select>
+    <label  for="national">Position</label>
+    <!-- <select id="national">
+      <option value="Germany">Germany</option>
+      <option value="Netherlands">Netherlands</option>
+      <option value="Argentina">Argentina</option>
+      <option value="Brazil">Brazil</option>
+      <option value="Uruguay">Uruguay</option>
+      <option value="Italy">Italy</option>
+      <option value="England">England</option>
+      <option value="Belgium">Belgium</option>
+      <option value="France">France</option>
+      <option value="Poland" selected>Poland</option>
+      <option value="Portugal">Portugal</option>
+      <option value="Spain">Spain</option>
+      <option value="Senegal">Senegal</option>
+      <option value="Slovenia">Slovenia</option>
+      <option value="Gabon">Gabon</option>
+      <option value="Egypt">Egypt</option>
+      <option value="Republic of Korea">Republic of Korea</option>
+      <option value="Austria">Austria</option>
+      <option value="Croatia">Croatia</option>
+      <option value="Moroco">Moroco</option>
+      <option value="Algeria">Algeria</option>
+      <option value="Sweden">Sweden</option>
+      <option value="Hungary">Hungary</option>
+      <option value="India">India</option>
+      <option value="Greece">Greece</option>
+      <option value="Costa Rica">Costa Rica</option>
+      <option value="Denmark">Denmark</option>
+      <option value="Scotland">Scotland</option>
+      <option value="Ghana">Ghana</option>
+      <option value="Norway">Norway</option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+    </select> -->
     <label for="imgs">Select image:</label>
     <input type="file" id="imgs" name="imgs" data='' accept="image/*" onChange="loadFile(event)" >
     <button onclick="add()">Submit</button>
@@ -70,29 +190,19 @@
   <div class="container" id='container'>
     <!-- <img src="iconicMomentBG_l.webp" alt="iconic-card" class="main-bg" /> -->
     <img src="#" alt="palyer-img" class="player-img"/>
-    <h3 class="pos">SS</h3>
-    <h3 class="rating">95</h3>
-    <img src="#" alt="ball" class="ball" />
-    <img src="flag-round-250.png" alt="flag" class="flag" />
-    <h4 class="name">J. Cruiff</h4>
+    <div class="small-container">
+      <h3 class="pos">SS</h3>
+      <h3 class="rating">95</h3>
+      <img src="#" alt="ball" class="ball" />
+      <!-- <img src="flag-round-250.png" alt="flag" class="flag" /> -->
+    </div>
+    <h4 class="name">Aamir</h4>
   </div>
   <input type='button' id='but_screenshot' value='Take screenshot' onclick='screenshot();'><br/>
-  <div class="new"></div>
+  <div id="new"></div>
   <!-- Script -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 <script type='text/javascript'>
-
-  function loadPage() {
-    let rating = document.querySelector("h3.rating");
-    let ballImg = document.querySelector("img.ball");
-    if(rating.innerText >= 85){
-      ballImg.src = "ball4.png";
-    } else if(rating.innerText < 85 && rating.innerText >= 80 ) {
-      ballImg.src = "ball3.png";
-    } else if (rating.innerText < 80 ) {
-      ballImg.src = "ball2.png";
-    }
-  }
   const loadFile = function(event) {
     let imgData = document.querySelector("input#imgs");
     const file = document.querySelector('input[type=file]').files[0];
@@ -113,15 +223,34 @@
       let bgUrl = document.querySelector("input#imgs").getAttribute("data");
       let bgCont = document.querySelector("img.player-img");
       let mainCont = document.getElementById("container");
+      let playerName = document.querySelector("h4.name");
+      let playerPos = document.querySelector("h3.pos")
+      let playerRating = document.querySelector("h3.rating");
+      let selectPos = document.getElementById("position").value;
+      let inputName = document.getElementById("name").value;
+      let inputRating = document.getElementById("rating").value;
       bgCont.src = bgUrl;
       console.log(bgCont.src);
       mainCont.style.display = "block";
+      playerName.innerText = inputName;
+      playerRating.innerText = inputRating;
+      playerPos.innerText = selectPos;
+      let rating = document.querySelector("h3.rating");
+      let ballImg = document.querySelector("img.ball");
+      if(rating.innerText >= 85){
+        ballImg.src = "ball4.png";
+      } else if(rating.innerText < 85 && rating.innerText >= 80 ) {
+        ballImg.src = "ball3.png";
+      } else if (rating.innerText < 80 ) {
+        ballImg.src = "ball2.png";
+      }
+
   }
 
   function screenshot(){
     html2canvas(document.getElementById('container')).then(function(canvas) {
-    document.body.appendChild(canvas);
-    var a = document.createElement('a');
+    document.getElementById("new").appendChild(canvas);
+    let a = document.createElement('a');
         a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
         let imgname = document.querySelector("h4.name").innerText;
         let hi = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
