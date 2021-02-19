@@ -289,7 +289,7 @@
     let topStyle = getComputedStyle(playerImg).top;
     style = window.getComputedStyle(playerImg, null).getPropertyValue('top');
     currentSize = parseFloat(style);
-    playerImg.style.top = (currentSize - 1) + 'px';
+    playerImg.style.top = (currentSize - 3) + 'px';
   }
 
   function btnDown() {
@@ -297,7 +297,7 @@
     let topStyle = getComputedStyle(playerImg).top;
     style = window.getComputedStyle(playerImg, null).getPropertyValue('top');
     currentSize = parseFloat(style);
-    playerImg.style.top = (currentSize + 1) + 'px';
+    playerImg.style.top = (currentSize + 3) + 'px';
   }
 
   function btnLeft() {
@@ -305,7 +305,7 @@
     let topStyle = getComputedStyle(playerImg).right;
     style = window.getComputedStyle(playerImg, null).getPropertyValue('right');
     currentSize = parseFloat(style);
-    playerImg.style.right = (currentSize - 1) + 'px';
+    playerImg.style.right = (currentSize - 3) + 'px';
   }
 
   function btnRight() {
@@ -313,7 +313,7 @@
     let topStyle = getComputedStyle(playerImg).right;
     style = window.getComputedStyle(playerImg, null).getPropertyValue('right');
     currentSize = parseFloat(style);
-    playerImg.style.right = (currentSize + 1) + 'px';
+    playerImg.style.right = (currentSize + 3) + 'px';
   }
 
   function sizeInc() {
@@ -322,7 +322,7 @@
     style = window.getComputedStyle(playerImg, null).getPropertyValue('height');
     currentSize = parseFloat(style);
     console.log(currentSize)
-      playerImg.style.height = (currentSize + 1) + 'px';
+      playerImg.style.height = (currentSize + 3) + 'px';
   }
 
   function sizeDec() {
@@ -331,7 +331,7 @@
     style = window.getComputedStyle(playerImg, null).getPropertyValue('height');
     currentSize = parseFloat(style);
     console.log(currentSize)
-      playerImg.style.height = (currentSize - 1) + 'px';
+      playerImg.style.height = (currentSize - 3) + 'px';
   }
 
   function screenshot(){
