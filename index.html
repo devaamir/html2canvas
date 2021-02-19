@@ -38,12 +38,13 @@
        padding-top: 20px
      }
      div.container {
-       background: url("iconicMomentBG_l.webp") no-repeat;
+       background: url("#") no-repeat;
        background-size: cover;
        width: 273px;
        height: 384px;
        position: relative;
        margin: 100px;
+       overflow: hidden;
        display: none;
      }
      div.container img.player-img {
@@ -51,6 +52,7 @@
        position: absolute;
        bottom: 0;
        right: -112px;
+       top: 0px;
      }
      div.container h3.pos {
        /* position: absolute; */
@@ -102,11 +104,24 @@
        width: 100%;
        height: 100%;
      }
+     div.special-buttons {
+       margin: 100px;
+       display: none;
+     }
+      #but_screenshot {
+       margin: 100px;
+     }
    </style>
  </head>
  <body>
   <h1 id="his">Take screenshot of webpage with html2canvas</h1>
   <div class="Area">
+    <label for="card-type">Card Type</label>
+    <select id="card-type">
+      <option value="Base-card">Base</option>
+      <option value="Legend-card">Legend</option>
+      <option value="Iconic-card" selected>Iconic</option>
+    </select>
     <label for="name">Player Name:</label>
     <input type="text" id="name" placeholder="player name" />
     <label for="rating">Player Rating:</label>
@@ -127,7 +142,7 @@
       <option value="LWF">LWF</option>
       <option value="CF">CF</option>
     </select>
-    <label  for="national">Position</label>
+    <!-- <label  for="national">Position</label> -->
     <!-- <select id="national">
       <option value="Germany">Germany</option>
       <option value="Netherlands">Netherlands</option>
@@ -198,7 +213,15 @@
     </div>
     <h4 class="name">Aamir</h4>
   </div>
-  <input type='button' id='but_screenshot' value='Take screenshot' onclick='screenshot();'><br/>
+  <div class="special-buttons">
+    <button class="btn-up" onclick="btnUp()">Up</button>
+    <button class="btn-up" onclick="btnDown()">Down</button>
+    <button class="btn-up" onclick="btnLeft()">Left</button>
+    <button class="btn-up" onclick="btnRight()">Right</button>
+    <button class="btn-up" onclick="sizeInc()">Size Up</button>
+    <button class="btn-up" onclick="sizeDec()">Size Down</button>
+  </div>
+  <input type='button' id='but_screenshot' value='Take screenshot' onclick='screenshot()'><br/>
   <div id="new"></div>
   <!-- Script -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
@@ -221,17 +244,21 @@
   }
   function add() {
       let bgUrl = document.querySelector("input#imgs").getAttribute("data");
+      let cardBg = document.getElementById("container");
       let bgCont = document.querySelector("img.player-img");
       let mainCont = document.getElementById("container");
+      let btns = document.querySelector("div.special-buttons");
       let playerName = document.querySelector("h4.name");
       let playerPos = document.querySelector("h3.pos")
       let playerRating = document.querySelector("h3.rating");
       let selectPos = document.getElementById("position").value;
       let inputName = document.getElementById("name").value;
       let inputRating = document.getElementById("rating").value;
+      let cardType = document.getElementById("card-type").value;
       bgCont.src = bgUrl;
       console.log(bgCont.src);
       mainCont.style.display = "block";
+      btns.style.display = "block";
       playerName.innerText = inputName;
       playerRating.innerText = inputRating;
       playerPos.innerText = selectPos;
@@ -244,7 +271,67 @@
       } else if (rating.innerText < 80 ) {
         ballImg.src = "ball2.png";
       }
+      console.log(cardType);
+        if( cardType == "Iconic-card" ){
+          cardBg.style.backgroundImage = 'url(iconicMomentBG_l.webp)';
+          // console.log(cardType);
+        }else if (cardType == "Legend-card"){
+        cardBg.style.backgroundImage = 'url(legendsBG_l.webp)';
+        // console.log(cardType);
+      }else if (cardType == "Base-card"){
+        cardBg.style.backgroundImage = 'url(baseBG_l.webp)';
+        // console.log(cardType);
+      }
+  }
 
+  function btnUp() {
+    let playerImg = document.querySelector("img.player-img");
+    let topStyle = getComputedStyle(playerImg).top;
+    style = window.getComputedStyle(playerImg, null).getPropertyValue('top');
+    currentSize = parseFloat(style);
+    playerImg.style.top = (currentSize - 1) + 'px';
+  }
+
+  function btnDown() {
+    let playerImg = document.querySelector("img.player-img");
+    let topStyle = getComputedStyle(playerImg).top;
+    style = window.getComputedStyle(playerImg, null).getPropertyValue('top');
+    currentSize = parseFloat(style);
+    playerImg.style.top = (currentSize + 1) + 'px';
+  }
+
+  function btnLeft() {
+    let playerImg = document.querySelector("img.player-img");
+    let topStyle = getComputedStyle(playerImg).right;
+    style = window.getComputedStyle(playerImg, null).getPropertyValue('right');
+    currentSize = parseFloat(style);
+    playerImg.style.right = (currentSize - 1) + 'px';
+  }
+
+  function btnRight() {
+    let playerImg = document.querySelector("img.player-img");
+    let topStyle = getComputedStyle(playerImg).right;
+    style = window.getComputedStyle(playerImg, null).getPropertyValue('right');
+    currentSize = parseFloat(style);
+    playerImg.style.right = (currentSize + 1) + 'px';
+  }
+
+  function sizeInc() {
+    let playerImg = document.querySelector("img.player-img");
+    let topStyle = getComputedStyle(playerImg).height;
+    style = window.getComputedStyle(playerImg, null).getPropertyValue('height');
+    currentSize = parseFloat(style);
+    console.log(currentSize)
+      playerImg.style.height = (currentSize + 1) + 'px';
+  }
+
+  function sizeDec() {
+    let playerImg = document.querySelector("img.player-img");
+    let topStyle = getComputedStyle(playerImg).height;
+    style = window.getComputedStyle(playerImg, null).getPropertyValue('height');
+    currentSize = parseFloat(style);
+    console.log(currentSize)
+      playerImg.style.height = (currentSize - 1) + 'px';
   }
 
   function screenshot(){
