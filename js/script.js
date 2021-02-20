@@ -61,7 +61,7 @@ const loadFile = function(event) {
     let topStyle = getComputedStyle(playerImg).top;
     style = window.getComputedStyle(playerImg, null).getPropertyValue('top');
     currentSize = parseFloat(style);
-    playerImg.style.top = (currentSize - 1) + 'px';
+    playerImg.style.top = (currentSize - 5) + 'px';
   }
 
   function btnDown() {
@@ -69,7 +69,7 @@ const loadFile = function(event) {
     let topStyle = getComputedStyle(playerImg).top;
     style = window.getComputedStyle(playerImg, null).getPropertyValue('top');
     currentSize = parseFloat(style);
-    playerImg.style.top = (currentSize + 1) + 'px';
+    playerImg.style.top = (currentSize + 5) + 'px';
   }
 
   function btnLeft() {
@@ -77,7 +77,7 @@ const loadFile = function(event) {
     let topStyle = getComputedStyle(playerImg).right;
     style = window.getComputedStyle(playerImg, null).getPropertyValue('right');
     currentSize = parseFloat(style);
-    playerImg.style.right = (currentSize - 1) + 'px';
+    playerImg.style.right = (currentSize - 5) + 'px';
   }
 
   function btnRight() {
@@ -85,7 +85,7 @@ const loadFile = function(event) {
     let topStyle = getComputedStyle(playerImg).right;
     style = window.getComputedStyle(playerImg, null).getPropertyValue('right');
     currentSize = parseFloat(style);
-    playerImg.style.right = (currentSize + 1) + 'px';
+    playerImg.style.right = (currentSize + 5) + 'px';
   }
 
   function sizeInc() {
@@ -94,7 +94,7 @@ const loadFile = function(event) {
     style = window.getComputedStyle(playerImg, null).getPropertyValue('height');
     currentSize = parseFloat(style);
     console.log(currentSize)
-      playerImg.style.height = (currentSize + 1) + 'px';
+      playerImg.style.height = (currentSize + 5) + 'px';
   }
 
   function sizeDec() {
@@ -103,7 +103,7 @@ const loadFile = function(event) {
     style = window.getComputedStyle(playerImg, null).getPropertyValue('height');
     currentSize = parseFloat(style);
     console.log(currentSize)
-      playerImg.style.height = (currentSize - 1) + 'px';
+      playerImg.style.height = (currentSize - 5) + 'px';
   }
 
   function screenshot(){
