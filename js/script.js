@@ -37,11 +37,11 @@ const loadFile = function(event) {
       let rating = document.querySelector("h3.rating");
       let ballImg = document.querySelector("img.ball");
       if(rating.innerText >= 85){
-        ballImg.src = "./assets/ball4.png";
+        ballImg.src = "../assets/ball4.png";
       } else if(rating.innerText < 85 && rating.innerText >= 80 ) {
-        ballImg.src = "./assets/ball3.png";
+        ballImg.src = "../assets/ball3.png";
       } else if (rating.innerText < 80 ) {
-        ballImg.src = "./assets/ball2.png";
+        ballImg.src = "../assets/ball2.png";
       }
       console.log(cardType);
         if( cardType == "Iconic-card" ){
